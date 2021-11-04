@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  justify-content: center;
+  max-width: 700px;
+  padding: 20px;
+}
+
+.inputWrapper {
+}
+
+.input {
+  height: 30px;
+  border: 1px solid #999;
+  font-size: 18px;
+  color: #1c87c9;
+  background-color: #eee;
+  border-radius: 5px;
+  box-shadow: 4px 4px #ccc;
+  padding: 0 15px;
+}
+
+.select {
+  height: 30px;
+  border: 1px solid #999;
+  font-size: 18px;
+  color: #1c87c9;
+  background-color: #eee;
+  border-radius: 5px;
+  box-shadow: 4px 4px #ccc;
+}
+
+.equal {
+  display: flex;
+  font-size: 28px;
+  color: #1c87c9;
+  margin: 0 auto;
+  padding: 0, 15px;
+}
