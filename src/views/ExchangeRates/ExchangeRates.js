@@ -1,5 +1,6 @@
 // import { useEffect } from 'react'
 import CurrencyList from '../../components/CurrencyList/CurrencyList'
+import Option from '../../components/Option/Option'
 import s from './ExchangeRates.module.scss'
 
 const ExchangeRates = ({ currencyOptions, baseCurrency, baseChange }) => {
@@ -17,12 +18,7 @@ const ExchangeRates = ({ currencyOptions, baseCurrency, baseChange }) => {
         onChange={handleFromCurrencyChange}
         value={baseCurrency}
       >
-        {currencyOptions &&
-          [...Object.keys(currencyOptions)].map((opt) => (
-            <option key={opt} value={opt}>
-              {opt}
-            </option>
-          ))}
+        {currencyOptions && <Option currencyOptions={currencyOptions} />}
       </select>
       {currencyOptions && <CurrencyList currencyOptions={currencyOptions} />}
     </div>

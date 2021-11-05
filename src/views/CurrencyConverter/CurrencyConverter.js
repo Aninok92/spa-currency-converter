@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import s from './CurrencyConverter.module.scss'
 import Input from '../../components/Input/Input'
+import Option from '../../components/Option/Option'
 
 const CurrencyConverter = ({
   currencyOptions,
@@ -33,54 +34,36 @@ const CurrencyConverter = ({
   const exchangeQuantity = handleExchangeQuantity()
 
   return (
-    <>
-      <div className={s.container}>
-        <div className={s.inputWrapper}>
-          <Input
-            value={quantity}
-            changeNewQuantity={onChangeQuantity}
-            disabled={false}
-          />
-          <select
-            className={s.select}
-            onChange={handleFromCurrencyChange}
-            value={baseCurrency}
-          >
-            {currencyOptions &&
-              [...Object.keys(currencyOptions)].map((opt) => (
-                <option key={opt} value={opt}>
-                  {opt}
-                </option>
-              ))}
-          </select>
-        </div>
-
-        <div className={s.equal}>=</div>
-
-        <div className={s.inputWrapper}>
-          <Input value={exchangeQuantity} disabled={true} />
-          <select
-            className={s.select}
-            onChange={handleToCurrencyChange}
-            value={toCurrency}
-          >
-            {currencyOptions &&
-              [...Object.keys(currencyOptions)].map((opt) => (
-                <option key={opt} value={opt}>
-                  {opt}
-                </option>
-              ))}
-          </select>
-        </div>
+    <div className={s.container}>
+      <div className={s.inputWrapper}>
+        <Input
+          value={quantity}
+          changeNewQuantity={onChangeQuantity}
+          disabled={false}
+        />
+        <select
+          className={s.select}
+          onChange={handleFromCurrencyChange}
+          value={baseCurrency}
+        >
+          {currencyOptions && <Option currencyOptions={currencyOptions} />}
+        </select>
       </div>
-    </>
+
+      <div className={s.equal}>=</div>
+
+      <div className={s.inputWrapper}>
+        <Input value={exchangeQuantity} disabled={true} />
+        <select
+          className={s.select}
+          onChange={handleToCurrencyChange}
+          value={toCurrency}
+        >
+          {currencyOptions && <Option currencyOptions={currencyOptions} />}
+        </select>
+      </div>
+    </div>
   )
 }
 
 export default CurrencyConverter
-
-// const targetQuantityArr = Object.entries(currencyOptions).find(
-//   ([key, _]) => key === toCurrency
-// )
-// const targetQuantity = targetQuantityArr ? targetQuantityArr[1] : 1
-// const exchangeQuantity = quantity * targetQuantity
