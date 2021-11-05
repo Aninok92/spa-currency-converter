@@ -1,21 +1,13 @@
 :root {
   --primary-text-color: #1c87c9;
   --secondary-text-color: #263859;
-
-  --dark-green-color: #556b2f;
-  --green-color: #008000;
-  --yellow-green-color: #9acd32;
-
   --border-color: #999;
   --background-color: #eee;
   --box-shadow-color: #ccc;
-
-  --light-red: #db7093;
   --dark-red: #800000;
   --red: #b22222;
   --white-color: #ffffff;
   --black-color: #000;
-  --linear-gradient: linear-gradient(90deg, #faf0cd, #fab397);
   --transition-duration: 250ms;
   --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }

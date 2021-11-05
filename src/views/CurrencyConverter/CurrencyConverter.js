@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import s from './CurrencyConverter.module.scss'
 import Input from '../../components/Input/Input'
 import Option from '../../components/Option/Option'
+import PropTypes from 'prop-types'
+import s from './CurrencyConverter.module.scss'
 
 const CurrencyConverter = ({
   currencyOptions,
@@ -64,6 +65,16 @@ const CurrencyConverter = ({
       </div>
     </div>
   )
+}
+
+CurrencyConverter.defaulProps = {
+  fromCurrencyChange: () => null,
+}
+
+CurrencyConverter.propTypes = {
+  currencyOptions: PropTypes.object.isRequired,
+  baseCurrency: PropTypes.string.isRequired,
+  fromCurrencyChange: PropTypes.func,
 }
 
 export default CurrencyConverter

@@ -1,12 +1,9 @@
-// import { useEffect } from 'react'
 import CurrencyList from '../../components/CurrencyList/CurrencyList'
 import Option from '../../components/Option/Option'
+import PropTypes from 'prop-types'
 import s from './ExchangeRates.module.scss'
 
 const ExchangeRates = ({ currencyOptions, baseCurrency, baseChange }) => {
-  const currencyArr = Object.entries(currencyOptions)
-  console.log(currencyArr)
-
   const handleFromCurrencyChange = (e) => {
     baseChange(e.target.value)
   }
@@ -23,6 +20,16 @@ const ExchangeRates = ({ currencyOptions, baseCurrency, baseChange }) => {
       {currencyOptions && <CurrencyList currencyOptions={currencyOptions} />}
     </div>
   )
+}
+
+ExchangeRates.defaulProps = {
+  baseChange: () => null,
+}
+
+ExchangeRates.propTypes = {
+  currencyOptions: PropTypes.object.isRequired,
+  baseCurrency: PropTypes.string.isRequired,
+  baseChange: PropTypes.func,
 }
 
 export default ExchangeRates
