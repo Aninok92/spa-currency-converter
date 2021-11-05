@@ -1,18 +1,17 @@
-s.wrapper {
-  padding: 20px;
-  width: 100%;
-}
-
-.select {
-  padding: 0 120px;
-  margin: 0 20px;
+.input {
+  height: 30px;
   border: 1px solid var(--border-color);
   font-size: 18px;
   color: var(--primary-text-color);
   background-color: var(--background-color);
   border-radius: 5px;
   box-shadow: 4px 4px var(--box-shadow-color);
-  &:hover {
-    transform: scale(1.03);
+  padding: 0 15px;
+
+  &:disabled {
+    color: var(--black-color);
+  }
+  &:hover:not([disabled]) {
+    color: var(--dark-red);
   }
 }

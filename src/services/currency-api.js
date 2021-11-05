@@ -18,7 +18,7 @@ import axios from 'axios'
 
 axios.defaults.baseURL = 'https://exchange-rates.abstractapi.com/v1/live'
 
-const API_KEY = 'adef8d72b2cb41e5974976dd554969d9'
+const API_KEY = '1cc6c214cc1840d7a6b8690b9bef327d'
 const target = 'RUB,EUR,USD'
 
 const fetchCurrency = async (baseCurrency) => {

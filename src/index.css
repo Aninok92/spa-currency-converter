@@ -1,3 +1,25 @@
+:root {
+  --primary-text-color: #1c87c9;
+  --secondary-text-color: #263859;
+
+  --dark-green-color: #556b2f;
+  --green-color: #008000;
+  --yellow-green-color: #9acd32;
+
+  --border-color: #999;
+  --background-color: #eee;
+  --box-shadow-color: #ccc;
+
+  --light-red: #db7093;
+  --dark-red: #800000;
+  --red: #b22222;
+  --white-color: #ffffff;
+  --black-color: #000;
+  --linear-gradient: linear-gradient(90deg, #faf0cd, #fab397);
+  --transition-duration: 250ms;
+  --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 body {
   margin: 0;
   padding: 20px;
@@ -38,23 +60,4 @@ button {
   font: inherit;
   cursor: pointer;
   outline: none;
-}
-
-:root {
-  --primary-text-color: #212121;
-  --secondary-text-color: #757575;
-  --dark-green-color: #556b2f;
-  --green-color: #008000;
-  --yellow-green-color: #9acd32;
-  --light-gray: #d3d3d3;
-  --dark-gray: #2f4f4f;
-  --gray: #808080;
-  --light-red: #db7093;
-  --dark-red: #800000;
-  --red: #b22222;
-  --primary-white-color: #ffffff;
-  --black-color: #000;
-  --linear-gradient: linear-gradient(90deg, #faf0cd, #fab397);
-  --transition-duration: 250ms;
-  --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }

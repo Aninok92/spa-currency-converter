@@ -1,18 +1,17 @@
 import { useState } from 'react'
 import s from './CurrencyConverter.module.scss'
+import Input from '../../components/Input/Input'
 
 const CurrencyConverter = ({
   currencyOptions,
   baseCurrency,
   fromCurrencyChange,
 }) => {
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(100)
   const [toCurrency, setToCurrency] = useState('RUB')
 
-  console.log('toCer', toCurrency)
-
-  const onChangeQuantity = (e) => {
-    setQuantity(e.target.value)
+  const onChangeQuantity = (newQuantity) => {
+    setQuantity(newQuantity)
   }
 
   const handleToCurrencyChange = (e) => {
@@ -28,7 +27,8 @@ const CurrencyConverter = ({
       ([key, _]) => key === toCurrency
     )
     const targetQuantity = targetQuantityArr ? targetQuantityArr[1] : 1
-    return quantity * targetQuantity
+    const convertQuantity = quantity * targetQuantity
+    return Math.floor(convertQuantity * 1000) / 1000
   }
   const exchangeQuantity = handleExchangeQuantity()
 
@@ -36,12 +36,10 @@ const CurrencyConverter = ({
     <>
       <div className={s.container}>
         <div className={s.inputWrapper}>
-          <input
-            className={s.input}
-            type="number"
-            min="1"
+          <Input
             value={quantity}
-            onChange={onChangeQuantity}
+            changeNewQuantity={onChangeQuantity}
+            disabled={false}
           />
           <select
             className={s.select}
@@ -60,12 +58,7 @@ const CurrencyConverter = ({
         <div className={s.equal}>=</div>
 
         <div className={s.inputWrapper}>
-          <input
-            className={s.input}
-            type="number"
-            value={exchangeQuantity}
-            disabled
-          />
+          <Input value={exchangeQuantity} disabled={true} />
           <select
             className={s.select}
             onChange={handleToCurrencyChange}

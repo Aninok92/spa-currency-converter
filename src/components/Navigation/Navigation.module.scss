@@ -3,13 +3,13 @@
   text-decoration: none;
   padding: 12px;
   font-weight: 500;
-  color: #263859;
+  color: var(--secondary-text-color);
   font-size: 18px;
   &:hover {
-    color: #1c87c9;
+    color: var(--primary-text-color);
   }
 }
 
 .activeLink {
-  color: #1c87c9;
+  color: var(--primary-text-color);
 }
