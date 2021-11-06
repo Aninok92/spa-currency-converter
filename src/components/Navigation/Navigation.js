@@ -6,7 +6,7 @@ const Navigation = () => (
     <NavLink exact to="/" className={s.link} activeClassName={s.activeLink}>
       Currency exchange
     </NavLink>
-    <NavLink to="/current" className={s.link} activeClassName={s.activeLink}>
+    <NavLink to="/rates" className={s.link} activeClassName={s.activeLink}>
       Exchange rates
     </NavLink>
   </nav>

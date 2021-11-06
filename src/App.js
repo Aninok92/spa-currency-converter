@@ -1,15 +1,27 @@
 import './App.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import detectBrowserLanguage from 'detect-browser-language'
 import Container from './components/Container/Container'
 import AppBar from './components/AppBar/AppBar'
 import fetchCurrency from './services/currency-api'
-import CurrencyConverter from './views/CurrencyConverter/CurrencyConverter'
-import ExchangeRates from './views/ExchangeRates/ExchangeRates'
+import Loader from './components/Loader/Loader'
+
+const CurrencyConverter = lazy(() =>
+  import(
+    './views/CurrencyConverter/CurrencyConverter' /* webpackChunkName: "CurrencyConverter" */
+  )
+)
+
+const ExchangeRates = lazy(() =>
+  import(
+    './views/ExchangeRates/ExchangeRates' /* webpackChunkName: "ExchangeRates" */
+  )
+)
 
 function App() {
   const [currencyOptions, setCurrencyOptions] = useState({})
+  // eslint-disable-next-line no-unused-vars
   const [language, setLanguage] = useState(detectBrowserLanguage())
   const [baseCurrency, setBaseCurrency] = useState('')
 
@@ -48,20 +60,22 @@ function App() {
     <Container>
       <AppBar />
       <Switch>
-        <Route path="/" exact>
-          <CurrencyConverter
-            currencyOptions={currencyOptions}
-            baseCurrency={baseCurrency}
-            fromCurrencyChange={handleFromCurrencyChange}
-          />
-        </Route>
-        <Route path="/current">
-          <ExchangeRates
-            currencyOptions={currencyOptions}
-            baseCurrency={baseCurrency}
-            baseChange={handleBaseChange}
-          />
-        </Route>
+        <Suspense fallback={<Loader />}>
+          <Route path="/" exact>
+            <CurrencyConverter
+              currencyOptions={currencyOptions}
+              baseCurrency={baseCurrency}
+              fromCurrencyChange={handleFromCurrencyChange}
+            />
+          </Route>
+          <Route path="/rates">
+            <ExchangeRates
+              currencyOptions={currencyOptions}
+              baseCurrency={baseCurrency}
+              baseChange={handleBaseChange}
+            />
+          </Route>
+        </Suspense>
       </Switch>
     </Container>
   )
